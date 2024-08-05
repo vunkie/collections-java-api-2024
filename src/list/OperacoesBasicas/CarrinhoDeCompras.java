@@ -1,13 +1,19 @@
 package list.OperacoesBasicas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CarrinhoDeCompras {
 
     public List<Item> listaItems;
 
+    public CarrinhoDeCompras() {
+        this.listaItems = new ArrayList<>();
+    }
+
     public void adicionarItem(String nome, double preco, int quantidade) {
-        listaItems.add(new Item(nome, preco, quantidade));
+        Item item = new Item(nome, preco, quantidade);
+        listaItems.add(item);
     }
 
     public void removerItem(String nome) {
@@ -29,6 +35,21 @@ public class CarrinhoDeCompras {
     }
 
     public void exibirItens(){
-        System.out.println(listaItems);
+        System.out.println(this.listaItems);
+    }
+
+    
+// Testes
+    public static void main(String[] args) {
+        CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+        carrinho.adicionarItem("Arroz", 10.0, 2);
+        carrinho.adicionarItem("Feijão", 8.0, 1);
+
+        carrinho.exibirItens();
+        System.out.println("Valor total: " + carrinho.calcularValorTotal());
+
+        carrinho.removerItem("Arroz");
+        carrinho.exibirItens();
+        System.out.println("Valor total: " + carrinho.calcularValorTotal());
     }
 }

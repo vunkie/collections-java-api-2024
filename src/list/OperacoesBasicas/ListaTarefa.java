@@ -11,11 +11,11 @@ public class ListaTarefa {
         this.tarefaList = new ArrayList<>();
     }
 
-    public void adicionarTarefa (String descricao) {
+    public void adicionarTarefa(String descricao) {
         tarefaList.add(new Tarefa(descricao));
     }
 
-    public void removerTarefa (String descricao) {
+    public void removerTarefa(String descricao) {
         List<Tarefa> tarefasParaRemover = new ArrayList<>();
         for (Tarefa t : tarefaList) {
             if (t.getDescricao().equalsIgnoreCase(descricao)) {
@@ -28,8 +28,22 @@ public class ListaTarefa {
     public int obterNumeroTotalTarefas() {
         return tarefaList.size();
     }
-
+    
     public void obterDescricoesTarefas() {
         System.out.println(tarefaList);
+    }
+
+    // Testes
+    public static void main(String[] args) {
+        ListaTarefa listaTarefa = new ListaTarefa();
+        listaTarefa.adicionarTarefa("Estudar Java");
+        listaTarefa.adicionarTarefa("Estudar Spring");
+
+        listaTarefa.obterDescricoesTarefas();
+        System.out.println("Total de tarefas: " + listaTarefa.obterNumeroTotalTarefas());
+
+        listaTarefa.removerTarefa("Estudar Java");
+        listaTarefa.obterDescricoesTarefas();
+        System.out.println("Total de tarefas: " + listaTarefa.obterNumeroTotalTarefas());
     }
 }
